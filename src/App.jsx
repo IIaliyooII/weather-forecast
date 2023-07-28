@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Buttom from "./components/Buttom";
+import Card from "./components/Card";
+import Forecast from "./components/Forecast";
+import Input from "./components/Input";
+import Weather from "./components/Weather";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className='h-screen grid place-items-center items-center  gap-10 p-3 bg-gradient-to-b from-velvet-rose to-creamy-nile'>
+      <Card style={"mb-8 "}>
+        <Input />
+        <Buttom />
+      </Card>
+      <Card style={"w-full md:w-4/12 lg:w-3/12 lg:h-fit grid grid-rows-1 self-start"}>
+        <Weather />
+        <Forecast />
+      </Card>
+    </main>
+  );
 }
 
-export default App
+export default App;
