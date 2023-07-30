@@ -1,13 +1,29 @@
-const Weather = () => {
+/* eslint-disable react/prop-types */
+import { image } from "./image";
+const Weather = ({ data }) => {
   return (
-    <div className='w-full flex flex-row px-2 py-1 items-center justify-between bg-transparent shadow-xl'>
-      <div className='font-extralight text-white'>
-        <h1>9 kyoto</h1>
-        <p>Perscription 80%</p>
-        <p>Wind 18km/h</p>
+    <>
+      <div>
+        <h1 className='text-4xl'>{data.location.country}</h1>
+        <p>Humidity: {data.forecast.forecastday[0].day.avghumidity} %</p>
+        <p>Condition: {data.forecast.forecastday[0].day.condition.text}</p>
+        <p>Wind: {data.forecast.forecastday[0].day.maxwind_kph} KM/h</p>
       </div>
-      <img width='100' height='100' src='https://img.icons8.com/nolan/100/cloud.png' alt='cloud' />
-    </div>
+      <div className='flex flex-row gap-3'>
+        <div className='flex flex-col'>
+          <span className='text-2xl'>{data.forecast.forecastday[0].day.avgtemp_c} °c</span>
+          <span className='text-sm'>
+            {new Date(data.forecast.forecastday[0].date).toLocaleString("en-us", { weekday: "long" })}
+          </span>
+        </div>
+        <img
+          width='100'
+          height='100'
+          src={image(data.forecast.forecastday[0].day.condition.text)}
+          alt={data.forecast.forecastday[0].day.condition.text}
+        />
+      </div>
+    </>
   );
 };
 

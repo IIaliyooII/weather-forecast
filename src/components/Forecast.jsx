@@ -1,38 +1,12 @@
-const Forecast = () => {
+import { image } from "./image";
+/* eslint-disable react/prop-types */
+const Forecast = ({ condition, temp, timeZone }) => {
   return (
-    <div className='w-full flex items-center justify-between px-3 py-1 bg-white rounded-b-lg '>
-      <div className='text-center'>
-        <img width='64' height='64' src='https://img.icons8.com/nolan/64/clouds.png' alt='clouds' />
-        <div className='flex flex-col font-extralight'>
-          <span>9 4</span>
-          <span>FRI</span>
-        </div>
-      </div>
-      <div className='text-center'>
-        <img
-          width='64'
-          height='64'
-          src='https://img.icons8.com/nolan/64/partly-cloudy-day.png'
-          alt='partly-cloudy-day'
-        />
-        <div className='flex flex-col font-extralight'>
-          <span>9 4</span>
-          <span>FRI</span>
-        </div>
-      </div>
-      <div className='text-center'>
-        <img width='64' height='64' src='https://img.icons8.com/nolan/64/snow.png' alt='snow' />
-        <div className='flex flex-col font-extralight'>
-          <span>9 4</span>
-          <span>FRI</span>
-        </div>
-      </div>
-      <div className='text-center'>
-        <img width='64' height='64' src='https://img.icons8.com/nolan/64/wind.png' alt='wind' />
-        <div className='flex flex-col font-extralight'>
-          <span>9 4</span>
-          <span>FRI</span>
-        </div>
+    <div className='text-center'>
+      <img width='50' height='50' src={image(condition)} alt={condition} />
+      <div className='flex flex-col font-extralight'>
+        <span className='text-lg'>{Math.round(temp)}°c</span>
+        <span className='text-sm'>{new Date(timeZone).toLocaleString("en-us", { weekday: "long" })}</span>
       </div>
     </div>
   );
